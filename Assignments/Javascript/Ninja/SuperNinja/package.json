@@ -1,0 +1,13 @@
+{
+  "name": "superninja",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "super_ninja.js",
+  "scripts": {
+    "start": "super_ninja.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

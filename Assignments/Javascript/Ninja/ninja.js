@@ -23,7 +23,4 @@ class Ninja {
   };
 }
 
-const blackNinja = new Ninja('Shadow', 100);
-
-blackNinja.showStats();
-blackNinja.drinkSake();
+export default Ninja;
