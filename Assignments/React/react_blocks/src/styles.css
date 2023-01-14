@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: calc(100vh - 60px);
+  background-color: #dddddd;
+  display: grid;
+  padding: 30px;
+  grid-template-columns: 20% auto;
+  grid-template-rows: auto 70%;
+  grid-template-areas:
+    'header header'
+    'nav main';
+}
