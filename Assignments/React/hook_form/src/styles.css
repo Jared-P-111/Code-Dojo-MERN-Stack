@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* outline: 1px solid red; */
+}
+
+.app {
+  height: 100vh;
+  display: grid;
+  grid-area: StyledForm;
+  grid-template-columns: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: fit-content;
+}
