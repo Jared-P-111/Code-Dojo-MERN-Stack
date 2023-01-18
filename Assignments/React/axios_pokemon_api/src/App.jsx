@@ -9,9 +9,9 @@ const App = () => {
 
   const fetchPokemon = () => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon/')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
       .then((response) => {
-        console.log(response.data.results);
+        console.log(response);
         setPokemon(response.data.results);
       })
       .catch((err) => console.log(err));
@@ -22,7 +22,7 @@ const App = () => {
       <button className="btn info" onClick={fetchPokemon}>
         Get Pokemon
       </button>
-      <div class="container">
+      <div className="container">
         {pokemon &&
           pokemon.map((pokemon, idx) => {
             return <Card key={idx} pokemon={pokemon} />;
