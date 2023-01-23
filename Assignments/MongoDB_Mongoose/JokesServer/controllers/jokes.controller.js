@@ -2,50 +2,36 @@ const Joke = require('../models/jokes.model');
 
 module.exports.findAllJokes = (req, res) => {
   Joke.find()
-    .then((allJokes) => {
-      res.json({ jokes: allJokes });
-    })
-    .catch((err) => {
-      res.json({ message: 'Something went wrong', error: err });
-    });
+    .then((jokes) => res.json(jokes)) //🧈<-- Remember json returns the object
+    .catch((err) => res.json(err));
 };
 
 module.exports.findOneJoke = (req, res) => {
-  Joke.findOne({ _id: req.params.id })
-    .then((oneJoke) => {
-      res.json({ joke: onJoke });
-    })
-    .catch((err) => {
-      res.json({ message: 'Something went wrong', error: err });
-    });
+  const { id } = req.params;
+
+  Joke.findById(id)
+    .then((oneJoke) => res.json(oneJoke))
+    .catch((err) => res.json(err));
 };
 
 module.exports.createNewJoke = (req, res) => {
   Joke.create(req.body)
-    .then((newJoke) => {
-      res.json({ joke: newJoke });
-    })
-    .catch((err) => {
-      res.json({ message: 'Something went wrong', error: err });
-    });
+    .then((newJoke) => res.json(newJoke))
+    .catch((err) => res.json(err));
 };
 
 module.exports.updateExistingJoke = (req, res) => {
-  Joke.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
-    .then((updateJoke) => {
-      res.json({ joke: updateJoke });
-    })
-    .catch((err) => {
-      res.json({ message: 'Something went wrong', error: err });
-    });
+  const { id } = req.params;
+
+  Joke.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
+    .then((updateJoke) => res.json(updateJoke))
+    .catch((err) => res.json(err));
 };
 
 module.exports.deleteAnExistingJoke = (req, res) => {
-  Joke.deleteOne({ _id: req.params.id })
-    .then((result) => {
-      res.json({ result: result });
-    })
-    .catch((err) => {
-      res.json({ message: 'Something went wrong', error: err });
-    });
+  const { id } = req.params;
+
+  Joke.findByIdAndDelete(id)
+    .then((result) => res.json(result))
+    .catch((err) => res.json(err));
 };
