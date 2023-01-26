@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const ProductForm = () => {
-  const [product, setProduct] = useState({ title: '', price: '', description: '' });
+  const [product, setProduct] = useState({ name: '', price: '', description: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,14 +27,14 @@ const ProductForm = () => {
           <div>
             <h1>Product Manager</h1>
             <label htmlFor="product" className="form-label">
-              Title
+              Product Name
             </label>
             <input
               type="text"
-              name="title"
-              id="title"
+              name="name"
+              id="name"
               className="form-control mb-3"
-              value={product.title}
+              value={product.name}
               onChange={handleChange}
               placeholder="Enter product name"
             />
@@ -64,7 +64,7 @@ const ProductForm = () => {
             />
           </div>
           <div className="d-flex justify-content-end">
-            <button type="submit" className="btn-primary mt-5">
+            <button type="submit" className="btn btn-success mt-5">
               CREATE
             </button>
           </div>

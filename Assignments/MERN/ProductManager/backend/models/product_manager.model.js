@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 //🧈Create our database schema object this is the blueprint for our DB
 const productManagementSchema = new mongoose.Schema(
   {
-    title: String,
+    name: String,
     price: Number,
     description: String,
   },

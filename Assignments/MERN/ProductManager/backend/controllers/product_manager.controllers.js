@@ -5,6 +5,11 @@ const Product = require('../models/product_manager.model');
   Like .create() which takes in the json body that is coming from the axios endpoint call from the 
   frontend.
 */
+//Utility for terminal
+const showAll = async () => {
+  const allProducts = await Product.find();
+  console.log(allProducts);
+};
 
 //🧈Here we create the product in the DB with the json object passed from the frontend.
 const create = (req, res) => {
@@ -16,9 +21,22 @@ const create = (req, res) => {
     .catch((err) => res.status(400).json(err));
 };
 
-const showAll = async () => {
-  const allProducts = await Product.find();
-  console.log(allProducts);
+const findAll = (req, res) => {
+  Product.find()
+    .then((products) => {
+      showAll();
+      res.status(200).json(products);
+    })
+    .catch((err) => res.status(400).json(err));
 };
 
-module.exports = { create };
+const findOne = (req, res) => {
+  const { id } = req.params;
+  Product.findById(id)
+    .then((product) => {
+      res.status(200).json(product);
+    })
+    .catch((err) => console.log(err));
+};
+
+module.exports = { create, findAll, findOne };

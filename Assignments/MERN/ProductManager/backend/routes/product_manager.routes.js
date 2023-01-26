@@ -1,5 +1,5 @@
 //🧈Bring in the controllers
-const { create } = require('../controllers/product_manager.controllers');
+const { create, findAll, findOne } = require('../controllers/product_manager.controllers');
 
 //🧈Bring in express to attach our routes
 const express = require('express');
@@ -10,10 +10,16 @@ const productRouter = express.Router();
 //🧈--------------- App Routes --------------------
 //🧈Here we take in the /api/ name space with productRouter and append /message
 
-// prettier-ignore
+//prettier-ignore
 productRouter
   .route('/products')
   .post(create)
+  .get(findAll);
+
+//prettier-ignore
+productRouter
+  .route('/products/:id')
+  .get(findOne)
 
 //🧈export the projects Router
 module.exports = productRouter;
