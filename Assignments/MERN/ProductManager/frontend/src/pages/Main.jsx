@@ -18,12 +18,12 @@ const Main = () => {
       })
       .catch((err) => console.log(err));
     return () => cleanUp.abort();
-  }, []);
+  }, [loaded]);
 
   return (
     <div>
-      <ProductForm />
-      {loaded && <ProductList products={products} />}
+      <ProductForm setLoaded={setLoaded} />
+      {loaded && <ProductList products={products} setLoaded={setLoaded} />}
     </div>
   );
 };

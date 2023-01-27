@@ -11,7 +11,6 @@ const showAll = async () => {
   console.log(allProducts);
 };
 
-//🧈Here we create the product in the DB with the json object passed from the frontend.
 const create = (req, res) => {
   Product.create(req.body)
     .then((product) => {
@@ -39,4 +38,21 @@ const findOne = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { create, findAll, findOne };
+const updateOne = (req, res) => {
+  const { id } = req.params;
+  Product.findByIdAndUpdate(id, req.body)
+    .then((product) => res.status(200).json(product))
+    .catch((err) => res.status(400).json(err));
+};
+
+const deleteById = (req, res) => {
+  const { id } = req.params;
+  Product.findByIdAndDelete(id)
+    .then((product) => {
+      res.status(200).json(product);
+      console.log(id);
+    })
+    .catch((err) => res.status(400).json(err));
+};
+
+module.exports = { create, findAll, findOne, updateOne, deleteById };

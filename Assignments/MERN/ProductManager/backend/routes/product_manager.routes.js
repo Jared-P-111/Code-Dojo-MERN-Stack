@@ -1,5 +1,11 @@
 //🧈Bring in the controllers
-const { create, findAll, findOne } = require('../controllers/product_manager.controllers');
+const {
+  create,
+  findAll,
+  findOne,
+  updateOne,
+  deleteById,
+} = require('../controllers/product_manager.controllers');
 
 //🧈Bring in express to attach our routes
 const express = require('express');
@@ -20,6 +26,8 @@ productRouter
 productRouter
   .route('/products/:id')
   .get(findOne)
+  .put(updateOne)
+  .delete(deleteById)
 
 //🧈export the projects Router
 module.exports = productRouter;
