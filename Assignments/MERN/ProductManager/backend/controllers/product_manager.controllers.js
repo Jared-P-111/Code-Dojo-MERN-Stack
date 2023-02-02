@@ -5,6 +5,7 @@ const Product = require('../models/product_manager.model');
   Like .create() which takes in the json body that is coming from the axios endpoint call from the 
   frontend.
 */
+
 //Utility for terminal
 const showAll = async () => {
   const allProducts = await Product.find();
